@@ -16,7 +16,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
-app.use("/uploads", express.static("uploads"));
+
 
 //port
 const PORT = process.env.PORT || 8000;
