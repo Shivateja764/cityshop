@@ -27,12 +27,12 @@ function SuggestedFruits({ fruitsProducts }) {
 	return (
 		<div className="w-full">
 			<div className="w-full flex justify-between items-center">
-				<h1 className="text-2xl font-semibold text-slate-800">
+				{/* <h1 className="text-2xl font-semibold text-slate-800">
 					Fresh Fruits
-				</h1>
+				</h1> */}
 				{/* icons */}
 				<div className=" flex justify-between items-center gap-x-10">
-					<button
+					{/* <button
 						className="bg-slate-300 p-1 rounded-lg hover:bg-slate-400 cursor-pointer"
 						onClick={prevProduct}
 					>
@@ -43,7 +43,7 @@ function SuggestedFruits({ fruitsProducts }) {
 						onClick={nextProduct}
 					>
 						<GrNext />
-					</button>
+					</button> */}
 				</div>
 			</div>
 

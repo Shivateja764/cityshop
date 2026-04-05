@@ -7,7 +7,7 @@ function Footer() {
 				<div className="mb-4 lg:mb-0">
 					<h2 className="text-2xl font-semibold">City Shop</h2>
 					<p className="text-sm">
-						Providing Quality Cooking Essentials
+						Providing Quality products
 					</p>
 				</div>
 				<div className="flex space-x-6">

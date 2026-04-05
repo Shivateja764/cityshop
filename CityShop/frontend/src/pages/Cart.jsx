@@ -109,52 +109,7 @@ function Cart() {
 								</div>
 							)}
 
-							{userState.email && (
-								<div className="w-full items-start relative">
-									<div
-										className="bg-blue-600 px-2 py-1 rounded-md hover:bg-blue-700 text-white w-40 mx-auto flex items-center justify-between"
-										onClick={handleToggleShowDemoAccount}
-									>
-										<button>Demo Account</button>
-										<div>
-											<AiOutlineArrowDown />
-										</div>
-									</div>
-
-									<div
-										className={`${
-											showDemoAccount
-												? "opacity-100 transition-opacity duration-500"
-												: "opacity-0 transition-opacity duration-500"
-										} absolute top-12 right-8 text-xs text-slate-700 border border-slate-300 p-2 rounded-md`}
-									>
-										<p>
-											<span className="font-medium">
-												Email:
-											</span>{" "}
-											tes000ing@gmail.com
-										</p>
-										<p>
-											<span className="font-medium">
-												Card-Info:
-											</span>{" "}
-											4242 4242 4242 4242 - 6/25 - 123
-										</p>
-										<p>
-											<span className="font-medium">
-												cardholder Name:
-											</span>{" "}
-											tes
-										</p>
-										<p>
-											<span className="font-medium">
-												Country:
-											</span>{" "}
-											Bangaldesh
-										</p>
-									</div>
-								</div>
-							)}
+							
 						</div>
 					</div>
 				</div>

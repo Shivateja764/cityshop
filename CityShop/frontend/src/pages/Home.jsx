@@ -23,12 +23,9 @@ function Home() {
 				</h1>
 
 				<p className="w-full text-sm sm:max-w-lg text-slate-600 tracking-wider mx-auto">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					Animi rem eius earum facilis! Sit, atque distinctio sint
-					laborum a ipsa nostrum doloremque possimus? Esse sed vel ut
-					asperiores incidunt. Iste non facilis tempora est, quod odit
-					fugit vel obcaecati deleniti quis corporis, quaerat
-					inventore aliquam. Aperiam commodi nesciunt eius modi
+					Welcome to City Shop, your one-stop destination for all your shopping needs. We are dedicated to bringing you a seamless and enjoyable online shopping experience with a wide range of high-quality products at the best prices.
+
+At City Shop, we offer everything from the latest electronics and fashion trends to home essentials and everyday products. Whether you're upgrading your gadgets, refreshing your wardrobe, or shopping for your home, we’ve got you covered.
 				</p>
 				<button
 					type="button"
