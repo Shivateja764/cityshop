@@ -13,11 +13,7 @@ connectDB();
 
 const app = express();
 
-const cors = require("cors");
-app.use(cors({
-  origin: "https://cityshop-5rrx.vercel.app/",
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
 
