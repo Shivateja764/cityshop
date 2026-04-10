@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
- 
+ import { useSelector } from "react-redux";
 const cardIcons = {
   visa: (
     <svg width="38" height="24" viewBox="0 0 38 24" fill="none">
@@ -43,10 +43,7 @@ export default function StripeCheckout() {
   const [qty] = useState(2);
   const [errors, setErrors] = useState({});
  
-  const unitPrice = 192.86;
-  const subtotal = (unitPrice * qty).toFixed(2);
-  const shipping = 385.71;
-  const total = (parseFloat(subtotal) + shipping).toFixed(2);
+const cartItems = useSelector((state) => state.products.cartItem);
  
   const formatCard = (val) => {
     const digits = val.replace(/\D/g, "").slice(0, 16);
@@ -59,6 +56,23 @@ export default function StripeCheckout() {
     return digits;
   };
  
+  // total quantity
+const totalQuantity = cartItems.reduce(
+  (acc, item) => acc + parseInt(item.qty),
+  0
+);
+
+// subtotal (sum of all items)
+const subtotal = cartItems.reduce(
+  (acc, item) => acc + parseFloat(item.total),
+  0
+);
+
+// shipping (you can keep fixed or dynamic)
+const shipping = 385.71;
+
+// final total
+const total = (subtotal + shipping).toFixed(2);
   // ✅ Validation
   const validate = () => {
     const newErrors = {};
@@ -128,7 +142,7 @@ export default function StripeCheckout() {
             }}>TEST MODE</span>
           </div>
  
-          <div style={{ marginBottom: "28px" }}>
+          {/* <div style={{ marginBottom: "28px" }}>
             <p style={{ color: "#444", fontSize: "14px", marginBottom: "10px", fontWeight: 500 }}>Choose a currency:</p>
             <div style={{ display: "flex", gap: "10px" }}>
               {[{ key: "inr", flag: "🇮🇳", label: "₹771.43" }, { key: "usd", flag: "🇺🇸", label: "$8.00" }].map(({ key, flag, label }) => (
@@ -146,16 +160,33 @@ export default function StripeCheckout() {
               1 USD = 96.4288 INR{" "}
               <span style={{ color: "#0570de", textDecoration: "underline", cursor: "pointer" }}>(includes 4% conversion fee)</span>
             </p>
-          </div>
+          </div> */}
  
-          <div style={{ borderTop: "1px solid #e6ebf1", paddingTop: "20px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "18px" }}>
-              <div>
-                <p style={{ fontWeight: 600, fontSize: "15px", color: "#1a1a1a", margin: 0 }}>Apple</p>
-                <p style={{ fontSize: "13px", color: "#6b7280", marginTop: "3px" }}>Qty {qty} ▾ &nbsp;<span>₹{unitPrice.toFixed(2)} each</span></p>
-              </div>
-              <p style={{ fontWeight: 600, fontSize: "15px", color: "#1a1a1a", margin: 0 }}>₹{subtotal}</p>
-            </div>
+         <div style={{ borderTop: "1px solid #e6ebf1", paddingTop: "20px" }}>
+  {cartItems.map((item, index) => (
+    <div
+      key={index}
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "flex-start",
+        marginBottom: "18px",
+      }}
+    >
+      <div>
+        <p style={{ fontWeight: 600, fontSize: "15px", margin: 0 }}>
+          {item.name}
+        </p>
+        <p style={{ fontSize: "13px", color: "#6b7280", marginTop: "3px" }}>
+          Qty {item.qty} • ₹{item.price} each
+        </p>
+      </div>
+
+      <p style={{ fontWeight: 600, fontSize: "15px", margin: 0 }}>
+        ₹{item.total}
+      </p>
+    </div>
+  ))}
             {[{ label: "Subtotal", value: `₹${subtotal}` }, { label: "Shipping", sub: "shipping (3-7 business days)", value: `₹${shipping.toFixed(2)}` }].map(({ label, sub, value }) => (
               <div key={label} style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
                 <div>
