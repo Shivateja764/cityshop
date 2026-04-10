@@ -11,15 +11,14 @@ function About() {
 							About Our Store
 						</h2>
 						<p className="text-slate-600 leading-relaxed mb-8 font-medium italic ">
-							At City, we are passionate about making your shopping experience simple, enjoyable, and reliable. Our mission is to bring you the best quality products across categories at affordable prices, all in one place.
+							At CityShop, we are dedicated to making your online shopping experience simple, convenient, and enjoyable. Our goal is to bring you a wide selection of high-quality products across multiple categories, all at affordable prices, in one seamless platform.
 						</p>
 						<p className="text-slate-600 leading-relaxed mb-8 font-medium italic">
-							Whether you are looking for the latest gadgets, fashion essentials, home products, or daily needs, we’ve got you covered. We carefully curate a wide range of products to match your lifestyle and preferences.
+							Whether you’re searching for the latest gadgets, stylish fashion, home essentials, or everyday necessities, CityShop has you covered. We carefully curate our product range to match your lifestyle and personal preferences.
 						</p>
 						<p className="text-slate-600 leading-relaxed mb-8 font-medium italic">
-							Our team works closely with trusted suppliers to ensure every product meets high standards of quality, value, and durability. We believe that online shopping should be convenient, secure, and satisfying.
+						Our team works closely with trusted suppliers to ensure that every product meets the highest standards of quality, value, and reliability. We believe that shopping online should be secure, smooth, and satisfying.
 
-At City, customer satisfaction is our top priority. From easy browsing to fast delivery and responsive support, we strive to make every step of your shopping journey smooth and enjoyable.
 						</p>
 					</div>
 					<div className="w-full lg:w-1/2 px-4">

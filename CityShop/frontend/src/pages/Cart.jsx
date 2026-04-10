@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
+// Cart.jsx - add useNavigate to imports
+import { useNavigate } from "react-router-dom";
 
 //components
 import CartProducts from "../components/CartProducts";
@@ -9,6 +11,7 @@ import emptyCart from "../assests/empty.gif";
 import { AiOutlineArrowDown } from "react-icons/ai";
 
 function Cart() {
+	const navigate = useNavigate();
 	const cartItems = useSelector((state) => state.products.cartItem);
 	const userState = useSelector((state) => state.user.userInfo);
 
@@ -97,7 +100,7 @@ function Cart() {
 								<button
 									type="button"
 									className="p-2 text-white bg-red-600 w-full rounded-md hover:bg-red-700"
-									onClick={handlePaymentButton}
+									onClick={() => navigate("/payment")}
 								>
 									Payment
 								</button>
@@ -109,7 +112,52 @@ function Cart() {
 								</div>
 							)}
 
-							
+							{userState.email && (
+								<div className="w-full items-start relative">
+									<div
+										className="bg-blue-600 px-2 py-1 rounded-md hover:bg-blue-700 text-white w-40 mx-auto flex items-center justify-between"
+										onClick={handleToggleShowDemoAccount}
+									>
+										<button>Demo Account</button>
+										<div>
+											<AiOutlineArrowDown />
+										</div>
+									</div>
+
+									<div
+										className={`${
+											showDemoAccount
+												? "opacity-100 transition-opacity duration-500"
+												: "opacity-0 transition-opacity duration-500"
+										} absolute top-12 right-8 text-xs text-slate-700 border border-slate-300 p-2 rounded-md`}
+									>
+										<p>
+											<span className="font-medium">
+												Email:
+											</span>{" "}
+											test4@gmail.com
+										</p>
+										<p>
+											<span className="font-medium">
+												Card-Info:
+											</span>{" "}
+											4242 4242 4242 4242 - 6/25 - 123
+										</p>
+										<p>
+											<span className="font-medium">
+												cardholder Name:
+											</span>{" "}
+											yourname
+										</p>
+										<p>
+											<span className="font-medium">
+												Country:
+											</span>{" "}
+											India
+										</p>
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>

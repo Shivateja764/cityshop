@@ -1,4 +1,3 @@
-//external imports
 const Stripe = require("stripe");
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -11,7 +10,7 @@ const checkOut = async (req, res) => {
 			payment_method_types: ["card"],
 			billing_address_collection: "auto",
 			shipping_options: [
-				{ shipping_rate: "shr_1NwMs9ExTKwmYDjHjFo99ngo" },
+				{ shipping_rate: "shr_1TKN2ADXXey58gnHi9HXi5RM" },
 			],
 
 			line_items: req.body.map((item) => {
