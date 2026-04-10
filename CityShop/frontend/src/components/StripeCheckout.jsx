@@ -69,7 +69,7 @@ const subtotal = cartItems.reduce(
 );
 
 // shipping (you can keep fixed or dynamic)
-const shipping = 385.71;
+const shipping = cartItems.length === 0 ? 0 : 385.71;
 
 // final total
 const total = (subtotal + shipping).toFixed(2);
