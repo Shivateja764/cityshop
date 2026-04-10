@@ -61,7 +61,7 @@ function Cart() {
 		toast("Redirecting to payment gateway ...");
 		stripePromise.redirectToCheckout({ sessionId: responseData });
 	};
-
+	
 	return (
 		<>
 			{cartItems[0] ? (
