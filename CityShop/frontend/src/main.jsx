@@ -20,7 +20,7 @@ import NewProduct from "./pages/NewProduct.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Cart from "./pages/Cart.jsx";
 import Success from "./pages/Success.jsx";
-import Cancel from "./pages/Cancel.jsx";
+
 import { store } from "./redux/store.js";
 import { Provider } from "react-redux";
 import StripeCheckout from "./components/StripeCheckout.jsx";
@@ -38,7 +38,7 @@ const router = createBrowserRouter(
 			<Route path="signUp" element={<SignUp />} />
 			<Route path="cart" element={<Cart />} />
 			<Route path="success" element={<Success />} />
-			<Route path="cancel" element={<Cancel />} />
+			
 			<Route path="payment" element={<StripeCheckout />} />
 			<Route path="success" element={<Success />} />
 		</Route>

@@ -7,7 +7,7 @@ const dotenv = require("dotenv").config();
 const connectDB = require("./config/db");
 const userRoute = require("./routes/UserRoutes");
 const newProduct = require("./routes/ProductRoutes");
-const paymentRoute = require("./routes/PaymentRoutes");
+// const paymentRoute = require("./routes/PaymentRoutes");
 
 connectDB();
 
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRoute);
 app.use("/products", newProduct);
-app.use("/payment/", paymentRoute);
+
 
 // listen to server
 app.listen(PORT, () => {
