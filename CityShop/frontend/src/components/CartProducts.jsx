@@ -44,7 +44,7 @@ function CartProducts({ item }) {
 							{item.category}
 						</p>
 						<p className="text-sm font-semibold">
-							<span className="text-red-700">$</span>
+							<span className="text-red-700">₹</span>
 							{item.price}
 						</p>
 						<div className="flex gap-x-2 items-center">
@@ -86,7 +86,7 @@ function CartProducts({ item }) {
 					{/* total */}
 
 					<p className="font-semibold text-slate-800">
-						Total: <span className="text-red-700">$</span>
+						Total: <span className="text-red-700">₹</span>
 						{item.total}
 					</p>
 				</div>

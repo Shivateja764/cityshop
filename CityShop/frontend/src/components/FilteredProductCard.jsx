@@ -51,7 +51,7 @@ export default function FilteredProductCard({
 						{category}
 					</p>
 					<p className="text-black font-semibold">
-						<span className="text-red-600">$</span>
+						<span className="text-red-600">₹</span>
 						{price}
 					</p>
 					<button

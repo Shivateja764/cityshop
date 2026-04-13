@@ -59,7 +59,7 @@ function Menu() {
 										{selectedProduct.category}
 									</p>
 									<p className="text-black text-2xl font-bold">
-										<span className="text-red-600">$</span>
+										<span className="text-red-600">₹</span>
 										{selectedProduct.price}
 									</p>
 									<p className="text-slate-500 text-base font-semibold">
