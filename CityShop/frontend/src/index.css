@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.swal-btn {
+  background-color: #28a745 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  border: none !important;
+}
+
+.swal-btn:hover {
+  background-color: #28a745 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}

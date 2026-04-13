@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../redux/productSlice";
 
 function Success() {
-	return (
-		<div className="bg-green-200 w-full max-w-md m-auto h-36 flex justify-center items-center font-semibold text-lg">
-			<p>Payment Successfull</p>
-		</div>
-	);
+  const navigate = useNavigate();
+  const dispatch = useDispatch(); // ✅ inside component
+
+  useEffect(() => {
+    Swal.fire({
+      title: "Payment Successful",
+      text: "Your order has been placed!",
+      icon: "success",
+      confirmButtonText: "Continue Shopping",
+      confirmButtonColor: "#28a745",
+      customClass: {
+        confirmButton: "swal-btn"
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(clearCart());  // ✅ CLEAR CART HERE
+        navigate("/");
+      }
+    });
+  }, [navigate, dispatch]);
+
+  return null;
 }
 
 export default Success;

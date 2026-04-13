@@ -73,7 +73,7 @@ const shipping = cartItems.length === 0 ? 0 : 385.71;
 
 // final total
 const total = (subtotal + shipping).toFixed(2);
-  // ✅ Validation
+  
   const validate = () => {
     const newErrors = {};
     if (!email.trim()) newErrors.email = "Email is required";
@@ -141,27 +141,6 @@ const total = (subtotal + shipping).toFixed(2);
               borderRadius: "4px", padding: "3px 10px", fontSize: "12px", fontWeight: "700", letterSpacing: "0.5px",
             }}>TEST MODE</span>
           </div>
- 
-          {/* <div style={{ marginBottom: "28px" }}>
-            <p style={{ color: "#444", fontSize: "14px", marginBottom: "10px", fontWeight: 500 }}>Choose a currency:</p>
-            <div style={{ display: "flex", gap: "10px" }}>
-              {[{ key: "inr", flag: "🇮🇳", label: "₹771.43" }, { key: "usd", flag: "🇺🇸", label: "$8.00" }].map(({ key, flag, label }) => (
-                <button key={key} onClick={() => setCurrency(key)} style={{
-                  display: "flex", alignItems: "center", gap: "8px", padding: "10px 18px",
-                  border: currency === key ? "2px solid #0570de" : "1.5px solid #d1d5db",
-                  borderRadius: "6px", background: "white", cursor: "pointer",
-                  fontWeight: currency === key ? 700 : 400, fontSize: "15px", color: "#1a1a1a",
-                }}>
-                  <span>{flag}</span> {label}
-                </button>
-              ))}
-            </div>
-            <p style={{ fontSize: "12px", color: "#6b7280", marginTop: "8px" }}>
-              1 USD = 96.4288 INR{" "}
-              <span style={{ color: "#0570de", textDecoration: "underline", cursor: "pointer" }}>(includes 4% conversion fee)</span>
-            </p>
-          </div> */}
- 
          <div style={{ borderTop: "1px solid #e6ebf1", paddingTop: "20px" }}>
   {cartItems.map((item, index) => (
     <div
@@ -205,26 +184,7 @@ const total = (subtotal + shipping).toFixed(2);
  
         {/* RIGHT PANEL */}
         <div style={{ flex: 1, padding: "40px 36px", minWidth: "320px" }}>
-          <button style={{
-            width: "100%", background: "#21c55d", color: "white", border: "none", borderRadius: "6px",
-            padding: "14px", fontSize: "16px", fontWeight: 700, cursor: "pointer",
-            display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", marginBottom: "18px",
-          }}
-            onMouseOver={e => e.currentTarget.style.background = "#16a34a"}
-            onMouseOut={e => e.currentTarget.style.background = "#21c55d"}
-          >
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <circle cx="11" cy="11" r="11" fill="white" fillOpacity="0.25" />
-              <path d="M7 11h8M13 8l3 3-3 3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Pay with <span style={{ fontStyle: "italic" }}>⚡ link</span>
-          </button>
- 
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
-            <div style={{ flex: 1, height: "1px", background: "#e6ebf1" }} />
-            <span style={{ color: "#9ca3af", fontSize: "13px" }}>OR</span>
-            <div style={{ flex: 1, height: "1px", background: "#e6ebf1" }} />
-          </div>
+          
  
           {/* Contact Information */}
           <div style={{ marginBottom: "20px" }}>
@@ -321,20 +281,7 @@ const total = (subtotal + shipping).toFixed(2);
               </div>
             </div>
  
-            {/* Save Info */}
-            <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", border: "1.5px solid #d1d5db", borderRadius: "8px", padding: "14px", marginTop: "10px" }}>
-              <input
-                type="checkbox"
-                id="save"
-                checked={saveInfo}
-                onChange={e => setSaveInfo(e.target.checked)}
-                style={{ marginTop: "2px", accentColor: "#0570de", width: "16px", height: "16px", cursor: "pointer" }}
-              />
-              <label htmlFor="save" style={{ cursor: "pointer" }}>
-                <p style={{ fontWeight: 600, fontSize: "14px", color: "#1a1a1a", margin: "0 0 2px 0" }}>Save my information for faster checkout</p>
-                <p style={{ fontSize: "12px", color: "#6b7280", margin: 0 }}>Pay securely on this site and everywhere Link is accepted.</p>
-              </label>
-            </div>
+            
  
             {/* Pay Button */}
             <button
@@ -352,7 +299,7 @@ const total = (subtotal + shipping).toFixed(2);
  
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "16px", marginTop: "16px" }}>
               <span style={{ fontSize: "12px", color: "#9ca3af" }}>
-                Powered by <span style={{ fontWeight: 700, color: "#635bff", fontStyle: "italic" }}>stripe</span>
+                Powered by <span style={{ fontWeight: 700, color: "#635bff", fontStyle: "italic" }}>shiva</span>
               </span>
               <span style={{ color: "#d1d5db" }}>|</span>
               <a href="#" style={{ fontSize: "12px", color: "#6b7280", textDecoration: "none" }}>Terms</a>

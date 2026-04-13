@@ -29,7 +29,7 @@ function Home() {
 					type="button"
 					className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md w-3/4 sm:max-w-[350px] mx-auto"
 				>
-					Order Now
+					CityShop
 				</button>
 			</div>
 

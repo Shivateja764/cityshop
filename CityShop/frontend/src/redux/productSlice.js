@@ -5,6 +5,7 @@ const initialState = {
 	cartItem: [],
 };
 
+
 export const productSlice = createSlice({
 	name: "products",
 	initialState,
@@ -12,6 +13,10 @@ export const productSlice = createSlice({
 		setAllProductsIntoReduxState: (state, action) => {
 			state.productList = [...action.payload];
 		},
+		clearCart: (state) => {
+  state.cartItem = [];
+  toast.success("Cart cleared");
+},
 
 		addToReduxCartItem: (state, action) => {
 			//construc new item
@@ -95,11 +100,13 @@ export const productSlice = createSlice({
 });
 
 //export
+
 export const {
 	setAllProductsIntoReduxState,
 	addToReduxCartItem,
 	deleteReduxCartItem,
 	increaseReduxItemQuantity,
+	clearCart,
 	decreaseReduxItemQuantity,
 } = productSlice.actions;
 export default productSlice.reducer;
