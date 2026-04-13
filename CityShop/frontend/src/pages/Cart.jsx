@@ -1,30 +1,28 @@
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { loadStripe } from "@stripe/stripe-js";
-import { useState, useEffect } from "react";
+
+import {  useEffect } from "react";
 // Cart.jsx - add useNavigate to imports
 import { useNavigate } from "react-router-dom";
 
 //components
 import CartProducts from "../components/CartProducts";
 import emptyCart from "../assests/empty.gif";
-import { AiOutlineArrowDown } from "react-icons/ai";
+
 
 function Cart() {
   const navigate = useNavigate();
   const cartItems = useSelector((state) => state.products.cartItem);
   const userState = useSelector((state) => state.user.userInfo);
 
-  const [showDemoAccount, setshowDemoAccount] = useState(false);
+  
 
   //start always from top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleToggleShowDemoAccount = () => {
-    setshowDemoAccount((prevState) => !prevState);
-  };
+ 
 
   //total quantity
   const totalQuantity = cartItems.reduce(
@@ -38,29 +36,6 @@ function Cart() {
     0,
   );
 
-  const stripeApiKey = import.meta.env.VITE_APP_STRIPE_PUBLIC_KEY;
-
-  //handel payment button
-  const handlePaymentButton = async () => {
-    const stripePromise = await loadStripe(stripeApiKey);
-    const fetchData = await fetch(
-      import.meta.env.VITE_APP_SERVER_DOMAIN + "payment/checkout",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(cartItems),
-      },
-    );
-
-    if (fetchData.statusCode === 500) return;
-
-    const responseData = await fetchData.json();
-
-    toast("Redirecting to payment gateway ...");
-    stripePromise.redirectToCheckout({ sessionId: responseData });
-  };
 
   return (
     <>
@@ -108,16 +83,7 @@ function Cart() {
                 </div>
               )}
 
-              {/* {userState.email && (
-                <div className="w-full items-start relative">
-                  <div
-                    className="bg-blue-600 px-2 py-1 rounded-md hover:bg-blue-700 text-white w-40 mx-auto flex items-center justify-between"
-                    onClick={handleToggleShowDemoAccount}
-                  >
-                    
-                  </div>
-                </div>
-              )} */}
+             
             </div>
           </div>
         </div>

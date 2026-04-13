@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import SignUpImage from "../assests/login-animation.gif";
 //icons
 import { BiShow, BiHide } from "react-icons/bi";
-import config from "../frontEndConfig";
 import { loginRedux } from "../redux/userslice";
 
 function Login() {

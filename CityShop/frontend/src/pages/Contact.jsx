@@ -23,13 +23,13 @@ function Contact() {
 	const handleSumbitButton = (e) => {
 		e.preventDefault();
 
-		// ✅ Validation
+		//Validation
 		if (!data.name || !data.email || !data.message) {
 			toast.error("Please fill all fields");
 			return;
 		}
 
-		// ✅ Success
+		// Success
 		toast.success("Message sent successfully");
 		setdata(inititalData);
 	};
