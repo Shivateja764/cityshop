@@ -7,7 +7,6 @@ const dotenv = require("dotenv").config();
 const connectDB = require("./config/db");
 const userRoute = require("./routes/UserRoutes");
 const newProduct = require("./routes/ProductRoutes");
-// const paymentRoute = require("./routes/PaymentRoutes");
 
 connectDB();
 
