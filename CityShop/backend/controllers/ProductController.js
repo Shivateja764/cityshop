@@ -1,19 +1,21 @@
-//external improts
 const Product = require("../models/product");
 
-//api
-//Route: /products/addProduct
 const uploadProduct = async (req, res) => {
-	await Product.create(req.body);
-	res.status(200).json({ message: "Product Upload Successfully" });
+	try {
+		const product = await Product.create(req.body);
+		res.status(201).json(product);
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
 };
 
-//api
-//Route: /products/getAllProducts
 const getAllProducts = async (req, res) => {
-	const products = await Product.find({});
-	res.send(JSON.stringify(products));
+	try {
+		const products = await Product.find({});
+		res.json(products);
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
 };
 
-//exports
 module.exports = { uploadProduct, getAllProducts };

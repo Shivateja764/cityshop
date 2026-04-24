@@ -1,15 +1,17 @@
-//external imports
 const express = require("express");
 const router = express.Router();
 
-//internal imports
 const {
 	uploadProduct,
 	getAllProducts,
 } = require("../controllers/ProductController");
 
-router.post("/addProduct", uploadProduct);
+const authMiddleware = require("../middleware/auth");
+
+// protected route
+router.post("/addProduct", authMiddleware, uploadProduct);
+
+// public route
 router.get("/getAllProducts", getAllProducts);
 
-//export
 module.exports = router;

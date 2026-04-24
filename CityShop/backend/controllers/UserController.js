@@ -1,59 +1,98 @@
-//internal imports
 const User = require("../models/user");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-//Route: /user/signUp
+// SIGN UP
+const User = require("../models/user");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+// SIGN UP
 const userSignUp = async (req, res) => {
 	try {
-		const { email } = req.body;
+		const { firstName, lastName, email, password } = req.body;
 
-		const user = await User.findOne({ email });
-
-		//if user already exits, then we won't want that
-		if (user) {
-			res.send({ message: "Email id already register.", alert: false });
+		// check required fields
+		if (!email || !password) {
+			return res.status(400).json({ message: "Missing fields" });
 		}
-		//is not exists
-		await User.create(req.body);
-		res.send({ message: "Successfully sign up", alert: true });
+
+		// check existing user
+		const existing = await User.findOne({ email });
+		if (existing) {
+			return res.status(400).json({ message: "User already exists" });
+		}
+
+		// 🔐 HASH PASSWORD HERE
+		const salt = await bcrypt.genSalt(10);
+		const hashedPassword = await bcrypt.hash(password, salt);
+
+		console.log("Original:", password);
+		console.log("Hashed:", hashedPassword);
+
+		// save user
+		const user = new User({
+			firstName,
+			lastName,
+			email,
+			password: hashedPassword, // ✅ hashed stored
+		});
+
+		await user.save();
+
+		res.status(201).json({
+			message: "User registered successfully",
+		});
 	} catch (error) {
-		res.send({ message: error.message });
+		res.status(500).json({ message: error.message });
 	}
 };
 
-//Route: /user/login
+// LOGIN
 const userLogin = async (req, res) => {
 	try {
-		const { email } = req.body;
+		const { email, password } = req.body;
 
 		const user = await User.findOne({ email });
+		if (!user) {
+			return res.send({
+				message: "User not found",
+				alert: false,
+			});
+		}
 
-		if (user) {
-			const userData = {
+		// compare password
+		const isMatch = await bcrypt.compare(password, user.password);
+
+		if (!isMatch) {
+			return res.send({
+				message: "Invalid credentials",
+				alert: false,
+			});
+		}
+
+		// create token
+		const token = jwt.sign(
+			{ id: user._id },
+			process.env.JWT_SECRET,
+			{ expiresIn: "7d" }
+		);
+
+		res.send({
+			message: "Login successful",
+			alert: true,
+			token,
+			data: {
 				_id: user._id,
 				firstName: user.firstName,
 				lastName: user.lastName,
 				email: user.email,
 				image: user.image,
-			};
-
-			res.send({
-				message: "Login Successfull",
-				alert: true,
-				data: userData,
-			});
-		} else {
-			res.send({
-				message: "Email is not available, please sign up first",
-				alert: false,
-			});
-		}
+			},
+		});
 	} catch (error) {
 		res.send({ message: error.message });
 	}
 };
 
-//export
-module.exports = {
-	userSignUp,
-	userLogin,
-};
+module.exports = { userSignUp, userLogin };
