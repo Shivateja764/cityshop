@@ -19,7 +19,7 @@ const userSignUp = async (req, res) => {
 			return res.status(400).json({ message: "User already exists" });
 		}
 
-		// 🔐 HASH PASSWORD HERE
+		//HASH PASSWORD HERE
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -31,7 +31,7 @@ const userSignUp = async (req, res) => {
 			firstName,
 			lastName,
 			email,
-			password: hashedPassword, // ✅ hashed stored
+			password: hashedPassword, 
 		});
 
 		await user.save();

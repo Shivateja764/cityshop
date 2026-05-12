@@ -23,7 +23,7 @@ import Success from "./pages/Success.jsx";
 
 import { store } from "./redux/store.js";
 import { Provider } from "react-redux";
-import StripeCheckout from "./components/StripeCheckout.jsx";
+
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -37,9 +37,6 @@ const router = createBrowserRouter(
 			<Route path="newProduct" element={<NewProduct />} />
 			<Route path="signUp" element={<SignUp />} />
 			<Route path="cart" element={<Cart />} />
-			<Route path="success" element={<Success />} />
-			
-			<Route path="payment" element={<StripeCheckout />} />
 			<Route path="success" element={<Success />} />
 		</Route>
 	)

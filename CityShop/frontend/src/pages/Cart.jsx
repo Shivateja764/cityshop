@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 import {  useEffect } from "react";
 // Cart.jsx - add useNavigate to imports
@@ -35,6 +36,83 @@ function Cart() {
     (acc, product) => acc + parseInt(product.total),
     0,
   );
+  const handlePayment = async () => {
+  try {
+
+    const { data } = await axios.post(
+      "http://localhost:8000/payment/create-order",
+      {
+        amount: totalPrice,
+      }
+    );
+
+    const options = {
+      key: "rzp_live_SoVwXrnTAp5qsq",
+
+      amount: data.amount,
+
+      currency: data.currency,
+
+      name: "My Store",
+
+      description: "Food Order Payment",
+
+      order_id: data.id,
+
+      handler: async function (response) {
+
+  try {
+
+    await axios.post(
+      "http://localhost:8000/payment/save-order",
+      {
+        userName: userState?.name,
+
+        email: userState?.email,
+
+        items: cartItems,
+
+        totalAmount: totalPrice,
+
+        razorpay_order_id: response.razorpay_order_id,
+
+        razorpay_payment_id: response.razorpay_payment_id,
+      }
+    );
+
+    toast.success("Payment Successful");
+
+    navigate("/success");
+
+  } catch (error) {
+
+    console.log(error);
+
+    toast.error("Order Save Failed");
+  }
+},
+
+      prefill: {
+        name: userState?.name,
+        email: userState?.email,
+      },
+
+      theme: {
+        color: "#2563eb",
+      },
+    };
+
+    const razorpay = new window.Razorpay(options);
+
+    razorpay.open();
+
+  } catch (error) {
+
+    console.log(error);
+
+    toast.error("Payment Failed");
+  }
+};
 
 
   return (
@@ -69,12 +147,12 @@ function Cart() {
               </div>
               {userState.email ? (
                 <button
-                  type="button"
-                  className="p-2 text-white bg-red-600 w-full rounded-md hover:bg-red-700"
-                  onClick={() => navigate("/payment")}
-                >
-                  Payment
-                </button>
+  type="button"
+  onClick={handlePayment}
+  className="p-2 text-white bg-red-600 w-full rounded-md hover:bg-red-700"
+>
+  Payment
+</button>
               ) : (
                 <div className="bg-blue-100 w-full text-center p-2 rounded-md">
                   <p className="font-thin italic text-red-500">

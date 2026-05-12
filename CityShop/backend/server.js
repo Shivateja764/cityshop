@@ -7,6 +7,7 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const userRoute = require("./routes/UserRoutes");
 const newProduct = require("./routes/ProductRoutes");
+const paymentRoute = require("./routes/paymentRoute");
 
 connectDB();
 
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRoute);
 app.use("/products", newProduct);
+app.use("/payment", paymentRoute);
 
 
 // listen to server
