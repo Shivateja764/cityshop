@@ -40,11 +40,15 @@ function Cart() {
   try {
 
     const { data } = await axios.post(
-      "http://localhost:8000/payment/create-order",
+      "https://cityshop-backend.onrender.com/payment/create-order",
       {
         amount: totalPrice,
       }
     );
+
+ 
+    
+
 
     const options = {
       key: "rzp_live_SoVwXrnTAp5qsq",
@@ -64,7 +68,7 @@ function Cart() {
   try {
 
     await axios.post(
-      "http://localhost:8000/payment/save-order",
+      "https://cityshop-backend.onrender.com/payment/save-order",
       {
         userName: userState?.name,
 
