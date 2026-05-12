@@ -40,7 +40,7 @@ function Cart() {
   try {
 
     const { data } = await axios.post(
-      "https://cityshop-backend.onrender.com/payment/create-order",
+      "https://cityshop-3.onrender.com/payment/create-order",
       {
         amount: totalPrice,
       }
@@ -68,7 +68,7 @@ function Cart() {
   try {
 
     await axios.post(
-      "https://cityshop-backend.onrender.com/payment/save-order",
+      "https://cityshop-3.onrender.com/payment/save-order",
       {
         userName: userState?.name,
 
