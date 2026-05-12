@@ -14,7 +14,8 @@ connectDB();
 const app = express();
 
 app.use(cors({
-    origin: "https://cityshop-5rrx.vercel.app",
+    origin: ["https://cityshop-5rrx.vercel.app",
+    "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
