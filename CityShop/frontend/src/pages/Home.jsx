@@ -26,11 +26,16 @@ function Home() {
 					CityShop is a modern, user-friendly eCommerce web application designed to bring local and global shopping experiences to users directly from their browsers. The platform combines a clean interface, secure payment methods, and smooth navigation to create a seamless online shopping experience.
 				</p>
 				<button
-					type="button"
-					className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md w-3/4 sm:max-w-[350px] mx-auto"
-				>
-					CityShop
-				</button>
+	type="button"
+	onClick={() => {
+		document.getElementById("about").scrollIntoView({
+			behavior: "smooth",
+		});
+	}}
+	className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md w-3/4 sm:max-w-[350px] mx-auto"
+>
+	CityShop
+</button>
 			</div>
 
 			{/* suggest fruits item in the first  */}
